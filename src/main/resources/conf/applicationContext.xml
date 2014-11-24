@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:dwr= "http://www.directwebremoting.org/schema/spring-dwr"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/mvc 
+       http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+       http://www.directwebremoting.org/schema/spring-dwr
+       http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
+
+	<!-- 引入DataSource配置 
+	<import resource="/ibatis/applicationContext-ibatis.xml"/>
+-->
+	
+	<!-- 自动扫描且只扫描@Controller；应用Spring的注解,把标记了@Controller注解的类转换为bean -->
+	<context:component-scan base-package="cn.gyyx.**">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
+	</context:component-scan>
+	
+	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:viewClass="org.springframework.web.servlet.view.JstlView" 
+		p:prefix="/WEB-INF/view/app/"
+		p:suffix=".jsp" />
+	
+	
+	
+	<!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean id="utf8StringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/plain;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 自动转化工具? -->
+	<mvc:annotation-driven conversion-service="conversionService" />
+	<bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean class="cn.gyyx.framework.plugins.StringToDateConverter" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="exceptionResolver"
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<!-- <prop key="cn.com.ecointel.webframework.exception.ObjectNotFoundException">object-not-found-exception</prop> 
+					<prop key="cn.com.ecointel.webframework.exception.NotAuthException">not-auth-exception</prop> -->
+			</props>
+		</property>
+	</bean>
+
+	<!-- CommonsMultipartResolver -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="1024000000"></property>
+	</bean>
+
+
+	<!-- MessageResolve -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>res.messages</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" 
+		p:cookieName="clientLanguage"
+		p:cookieMaxAge="10000"
+		p:cookiePath="/"
+		p:defaultLocale="en"/>
+	<mvc:interceptors>
+		<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+	</mvc:interceptors>
+	
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources/ directory -->
+	<mvc:resources mapping="/resources/**" location="/resources/" cache-period="31536000"/>
+	
+	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+    <bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter" />
+    
+    <!-- 该 BeanPostProcessor 将自动对标注 @Autowired 的 Bean 进行注入 -->
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+</beans> 

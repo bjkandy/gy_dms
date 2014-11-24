@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="security_user">
+	<resultMap type="User" id="UserMap">
+		<id column="guidUserId" property="uid"/>
+		<result column="userCode" property="spell"/>
+		<result column="userJober" property="jober"/>
+		<result column="userEmail" property="Email"/>
+	</resultMap>
+	
+	<select id="sel_login" resultMap="UserMap" parameterType="String">
+		SELECT * FROM employee WHERE Email = #{userEmail}
+	</select>
+</mapper>

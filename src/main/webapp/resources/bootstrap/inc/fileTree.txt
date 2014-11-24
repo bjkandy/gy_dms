@@ -1,0 +1,31 @@
+<ul class="jqueryFileTree" style="display: none;">
+	<li class="directory collapsed"><a href="#" rel="../images/.quarantine/">.quarantine</a></li>
+	<li class="directory collapsed"><a href="#" rel="../images/.tmb/">.tmb</a></li>
+	<li class="directory collapsed"><a href="#" rel="../images/backgrounds/">backgrounds</a></li>
+	<li class="directory collapsed"><a href="#" rel="../images/elements/">elements</a></li>
+	<li class="directory collapsed"><a href="#" rel="../images/fileManager/">fileManager</a></li>
+	<li class="directory collapsed"><a href="#" rel="../images/icons/">icons</a></li>
+	<li class="directory collapsed"><a href="#" rel="../images/jquery_ui/">jquery_ui</a></li>
+	<li class="directory collapsed"><a href="#" rel="../images/live/">live</a></li>
+	<li class="directory collapsed"><a href="#" rel="../images/sprites/">sprites</a></li>
+	<li class="directory collapsed"><a href="#" rel="../images/switcher/">switcher</a></li>
+	<li class="directory collapsed"><a href="#" rel="../images/tables/">tables</a></li>
+	<li class="file ext_png"><a href="#" rel="../images/big.png">big.png</a></li>
+	<li class="file ext_png"><a href="#" rel="../images/demo.png">demo.png</a></li>
+	<li class="file ext_png"><a href="#" rel="../images/div.png">div.png</a></li>
+	<li class="file ext_png"><a href="#" rel="../images/dropFiles.png">dropFiles.png</a></li>
+	<li class="file ext_png"><a href="#" rel="../images/gallery.png">gallery.png</a></li>
+	<li class="file ext_html"><a href="#" rel="../images/index.html">index.html</a></li>
+	<li class="file ext_png"><a href="#" rel="../images/leftArrow.png">leftArrow.png</a></li>
+	<li class="file ext_png"><a href="#" rel="../images/loginControl.png">loginControl.png</a></li>
+	<li class="file ext_png"><a href="#" rel="../images/logo.png">logo.png</a></li>
+	<li class="file ext_png"><a href="#" rel="../images/newLogo.png">newLogo.png</a></li>
+	<li class="file ext_png"><a href="#" rel="../images/rightArrow.png">rightArrow.png</a></li>
+	<li class="file ext_png"><a href="#" rel="../images/searchSmall.png">searchSmall.png</a></li>
+	<li class="file ext_png"><a href="#" rel="../images/subArrow.png">subArrow.png</a></li>
+	<li class="file ext_gif"><a href="#" rel="../images/tipsy.gif">tipsy.gif</a></li>
+	<li class="file ext_png"><a href="#" rel="../images/user.png">user.png</a></li>
+	<li class="file ext_png"><a href="#" rel="../images/userLogin.png">userLogin.png</a></li>
+	<li class="file ext_png"><a href="#" rel="../images/userLogin2.png">userLogin2.png</a></li>
+	<li class="file ext_png"><a href="#" rel="../images/widgetDiv.png">widgetDiv.png</a></li>
+</ul>
