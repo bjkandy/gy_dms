@@ -11,7 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.gyyx.framework.utils.Constant;
+import cn.gyyx.framework.util.Constant;
 
 	/**
 	 * 未登录过滤
